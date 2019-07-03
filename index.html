@@ -33,6 +33,7 @@
 						<input type="text" placeholder="Search" @change="searchAlbum" v-model="search"><i class="fa fa-search" @click="showSearch"></i>
 					</div>
 					<div class="view-list">
+						<div class="noFav" v-if="countFav === 0 && filtered">No favorite Album!</div>
 						<ul v-if="allMusic != null">
 							<li v-for="(v,k) in allMusic" v-if="v.show" @click="changeMusic(v,k)">
 								<div class="img-cont">

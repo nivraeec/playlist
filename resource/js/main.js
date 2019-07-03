@@ -18,7 +18,8 @@ var app = new Vue({
 			slist: true,
 			filtered: false,
 			sSideList: false,
-			listTitle: "iTunes Albums"
+			listTitle: "iTunes Albums",
+			countFav: 0
 		}
 	},
 	created(){
@@ -112,6 +113,13 @@ var app = new Vue({
 		},
 		addFav(v){
 			this.allMusic[v].favorite = !this.allMusic[v].favorite
+			
+			if(this.allMusic[v].favorite){
+				this.countFav++
+			}else{
+				this.countFav--
+			}
+
 			this.$refs.playList.mlist = this.allMusic
 		},
 		fFav(){

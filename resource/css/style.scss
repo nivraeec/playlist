@@ -141,6 +141,12 @@ body{
 			padding: 10px;
 			color: $w;
 
+			.noFav{
+				font-size: 30px;
+				@include div(transparent, absolute, 50%, 50%, 1);	
+				@include transform(translate(-50%, -50%));
+			}
+
 			.view-list{
 				height: 90%;
 				overflow: auto;
