@@ -1,0 +1,190 @@
+@-webkit-keyframes loading{
+	from{
+		@include transform(rotate(0deg));
+	}
+	to{
+		@include transform(rotate(360deg));
+	}
+}
+@-moz-keyframes loading{
+	from{
+		@include transform(rotate(0deg));
+	}
+	to{
+		@include transform(rotate(360deg));
+	}
+}
+@-o-keyframes loading{
+	from{
+		@include transform(rotate(0deg));
+	}
+	to{
+		@include transform(rotate(360deg));
+	}
+}
+@keyframes loading{
+	from{
+		@include transform(rotate(0deg));
+	}
+	to{
+		@include transform(rotate(360deg));
+	}
+}
+
+// POPOUT ANIMATION
+@-webkit-keyframes popout{
+	0%{
+		@include transform(scale(1));
+		opacity: 0;
+	}
+	25%{
+		@include transform(scale(0.6));
+	}
+	50%{
+		@include transform(scale(1.1));		
+		opacity: 1;
+	}
+	100%{
+		@include transform(scale(1));
+	}
+}
+@-moz-keyframes popout{
+	0%{
+		@include transform(scale(1));
+		opacity: 0;
+	}
+	25%{
+		@include transform(scale(0.6));
+	}
+	50%{
+		@include transform(scale(1.1));		
+		opacity: 1;
+	}
+	100%{
+		@include transform(scale(1));
+	}
+}
+@-o-keyframes popout{
+	0%{
+		@include transform(scale(1));
+		opacity: 0;
+	}
+	25%{
+		@include transform(scale(0.6));
+	}
+	50%{
+		@include transform(scale(1.1));		
+		opacity: 1;
+	}
+	100%{
+		@include transform(scale(1));
+	}
+}
+@keyframes popout{
+	0%{
+		@include transform(scale(1));
+		opacity: 0;
+	}
+	25%{
+		@include transform(scale(0.6));
+	}
+	50%{
+		@include transform(scale(1.1));		
+		opacity: 1;
+	}
+	100%{
+		@include transform(scale(1));
+	}
+}
+
+// FADE ANIMATION
+.fade {
+	&-enter-active{
+  		animation: fade 0.5s ease-in-out;
+	}
+  	&-leave-active {
+		animation: fade 0.3s ease-in-out reverse;
+	}
+}
+@-webki-keyframes fade{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+@-moz-keyframes fade{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+@-o-keyframes fade{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+@keyframes fade{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+
+// SLIDEUP ANIMATIONS
+.slideUp {
+	&-enter-active{
+  		animation: slideUp 0.5s ease-in-out;
+	}
+  	&-leave-active {
+		animation: slideUp 0.3s ease-in-out reverse;
+	}
+}
+@-webki-keyframslideUpade{
+	from{
+		top: -250px;
+		opacity: 0;
+	}
+	to{
+		top: -290px;
+		opacity: 1;
+	}
+}
+@-moz-keyframesslideUpe{
+	from{
+		top: -250px;
+		opacity: 0;
+	}
+	to{
+		top: -290px;
+		opacity: 1;
+	}
+}
+@-o-keyframes slideUp{
+	from{
+		top: -250px;
+		opacity: 0;
+	}
+	to{
+		top: -290px;
+		opacity: 1;
+	}
+}
+@keyframes slideUp{
+	from{
+		top: -250px;
+		opacity: 0;
+	}
+	to{
+		top: -290px;
+		opacity: 1;
+	}
+}

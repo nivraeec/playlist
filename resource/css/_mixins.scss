@@ -1,0 +1,28 @@
+@mixin div($back, $pos, $top, $left, $z...){
+	background: $back;
+	position: $pos;
+	top: $top;
+	left: $left;
+	z-index: $z;
+}
+
+@mixin transform($val){
+	-webkit-transform: $val;
+	-moz-transform: $val;
+	-o-transform: $val;
+	transform: $val;
+}
+
+@mixin transit($val) {
+  -webkit-transition: $val;
+  -moz-transition: $val;
+  -o-transition: $val;
+  transition: $val;
+}
+
+@mixin animate($val){
+	-webkit-animation: $val;
+	-moz-animation: $val;
+	-o-animation: $val;
+	animation: $val;
+}

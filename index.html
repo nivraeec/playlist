@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="theme-color" content="#ff2c65" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no, address=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<link rel="shortcut icon" href="resource/images/itunes.png" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="resource/css/style.css" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<title>iTunes Top Albums</title>
+</head>
+<body>
+	<div id="app">
+		<transition name="fade">
+			<section v-if="music != null">
+				<div class="prev" @click="prev">
+					<i class="fa fa-angle-left"></i>Previous
+				</div>
+				<display :music="music" @favorite="addFav" />
+			</section>
+
+			<section v-else>
+				<div class="er-showAll">
+					<div class="title">iTunes Top 100 Albums</div>
+					<div class="search" :class="sshow? 'sAll' : ''">
+						<input type="text" placeholder="Search" @change="searchAlbum" v-model="search"><i class="fa fa-search" @click="showSearch"></i>
+					</div>
+					<div class="view-list">
+						<ul v-if="allMusic != null">
+							<li v-for="(v,k) in allMusic" v-if="v.show" @click="changeMusic(v,k)">
+								<div class="img-cont">
+									<div class="num" :style="'background: '+ (v.favorite? 'orange' : '')">
+										<span v-if="!v.favorite">{{k + 1}}</span>
+										<span v-else><i class="fa fa-star"></i></span>
+									</div>
+									<div class="overlay"></div>
+									<img :src="v['im:image'][2].label" :alt="v['im:name'].label">
+								</div>
+								{{v["im:name"].label}}
+							</li>
+						</ul>
+						<div v-else>
+							<img src="resource/images/loading.png" alt="top loading" class="er-loading">
+						</div>
+					</div>
+				</div>
+			</section>
+		</transition>
+
+		<!-- <section>
+			<player />
+		</section> -->
+
+		<section>
+			<list ref="playList" @selected="changeMusic" @filter="fFav" :show="slist" :title="listTitle" />
+		</section>
+	</div>
+</body>
+
+<script src="resource/js/vue.min.js"></script>
+<script src="resource/js/axios.min.js"></script>
+<script type="module" src="resource/js/main.js"></script>
+</html>

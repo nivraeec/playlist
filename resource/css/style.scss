@@ -1,0 +1,627 @@
+@import 'variable';
+@import 'mixins';
+@import 'animation';
+
+*{
+	box-sizing: border-box;
+	font-family: $df;
+	font-weight: $light;
+	font-size: 14px;
+
+	&::-webkit-scrollbar-track{
+		background-color: rgba(0,0,0,0.05);
+		border-radius:20px;
+	}
+
+	&::-webkit-scrollbar{
+		width: 6px;
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb{
+		background-color: $w;
+		border-radius:20px;
+	}
+}
+
+a{
+	text-decoration:  none;
+	color: inherit;
+}
+
+input, button {
+	outline: none;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+input{
+	width: 100%;
+	font-size: 13px;
+	border-radius: 20px;
+	padding: 10px 30px 10px 15px;
+	border: none;
+	background: rgba(0,0,0,0.4);
+	color: $w;
+}
+
+.btn{
+	text-align: center;
+	background: transparent;
+	border: 1px solid $w;
+	color: $w;
+	padding: 10px 30px;
+	border-radius: 20px;
+	@include transit(all ease-in-out 0.3s);
+	cursor: pointer;
+
+	.fa{
+		margin-right: 10px;
+	}
+
+	&.btn-primary{
+
+		&:hover{
+			background: $pcolor;
+			border-color: $pcolor;
+		}
+	}
+
+	&.btn-success{
+
+		&:hover, &.active{
+			background: $orange;
+			border-color: $orange;
+		}
+	}
+
+}
+
+.tr{
+	text-align: right !important;
+}
+
+.fr{
+	float: right;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background: url("../images/background.png") no-repeat fixed center center #2e3a40;
+	background-size: cover;
+
+	@each $n, $c in $color{
+		&.er-back-#{$n}{
+			background: url("../images/background.png") no-repeat fixed center center #{$c};
+			background-size: cover;
+		}
+
+		.er-color-#{$n}{
+			background: #{$c};
+		}
+	}
+
+	#app{
+
+		.prev{
+			text-align: left;
+			font-size: 25px;
+			font-weight: $bold;
+			padding: 20px;
+			margin-bottom: 20px;
+			position: relative;
+			color: $w;
+			cursor: pointer;
+
+			.fa{
+				vertical-align: bottom;
+				color: $pcolor;
+				font-size: 35px;
+				margin-right: 10px;
+			}
+		}
+
+		.er-loading{
+			width: 50px;
+			@include div(transparent, absolute, 50%, 50%, 1);	
+			@include transform(translate(-50%, -50%));
+			@include animate(loading ease-in-out 0.7s infinite);
+		}
+
+		.er-showAll{
+			@include div(transparent, absolute, 0, 0, 100);	
+			text-align: center;
+			width: 75%;
+			height: 100%;
+			overflow: auto;
+			padding: 10px;
+			color: $w;
+
+			.view-list{
+				height: 90%;
+				overflow: auto;
+			}
+
+			.search{
+				position: absolute;
+				right: 20px;
+				top: 20px;
+				width: 45px;
+				@include transit(all ease-in-out 0.3s);
+
+				input{
+					padding: 10px 30px 10px 20px;
+				}
+
+				.fa-search{
+					color: $pcolor;
+					cursor: pointer;
+					position: absolute;
+					top: 50%;
+					right: 13px;
+					@include transform(translate(0, -50%));
+				}
+
+				&.sAll{
+					width: 40%;
+				}
+			}
+
+			.title{
+				text-align: left;
+				font-size: 25px;
+				font-weight: $bold;
+				padding: 10px;
+				margin-bottom: 20px;
+				position: relative;
+
+				&:before{
+					content: "";
+					border-bottom: 3px solid $pcolor;
+					width: 70px;
+					position: absolute;
+					left: 10px;
+					bottom: 0;
+				}
+			}
+
+			ul{
+				li{
+					display: inline-table;
+					width: 20%;
+					padding: 10px;
+					vertical-align: top;
+					font-size: 13px;
+					cursor: pointer;
+
+					.img-cont{
+						width: 180px;
+						height: 180px;
+						margin: auto;
+						overflow: hidden;
+						margin-bottom: 10px;
+						border: 5px solid rgba(255,255,255,0.05);
+						cursor: pointer;
+						position: relative;
+						@include animate(popout ease-in-out 0.7s);
+
+						.overlay{
+							@include div(#222222, absolute, 0, 0, 99);
+							width: 100%;
+							height: 100%;
+							opacity: 0.5;
+							@include transit(all ease-in-out 0.3s);
+
+							&:hover{
+								opacity: 0;
+
+								&~img{
+									@include transform(scale(1.2));	
+								}
+							}
+						}
+
+						.num{
+							@include div($red, absolute, 10px, 10px, 100);	
+							width: 35px;
+							height: 35px;
+							border-radius: 100%;
+							border: 3px solid $w;
+
+							span{
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								font-weight: $bold;
+								@include transform(translate(-50%, -50%));
+							}
+						}
+
+						img{
+							@include transit(all ease-in-out 0.3s);
+						}
+					}
+				}
+			}
+		}
+
+		.er-displayMusic{
+			@include div(transparent, absolute, 50%, 10%, 100);	
+			@include animate(fade ease-in-out 0.3s);
+			@include transform(translate(0, -50%));	
+			color: $w;	
+			vertical-align: top;
+			width: 60%;
+
+			.cont{		
+				display: flex;
+
+				.view-info{
+					width: 100%;
+
+					.title{
+						font-size: 25px;
+
+						span{
+							font-size: 25px;
+							color: $orange;
+						}
+					}
+
+					.artist{
+						color: $wl;
+
+						span{
+							margin: 10px;
+						}
+					}
+
+					.price{
+						font-size: 35px;
+						color: $pcolor;
+					}
+
+					.info{
+						padding: 20px 0;
+						line-height: 1.5;
+					}
+				}	
+
+				img{
+					margin-right: 20px;
+					width: 200px;
+					border: 5px solid rgba(255,255,255,0.05);
+				}
+			}
+		}
+
+		.er-player{
+			@include div(#222, fixed, unset, 0, 100);
+			bottom: 0;		
+			width: 100%;
+			height: 50px;	
+		}
+
+		.er-playlist{
+			@include div(rgba(255,255,255,0.1), fixed, 0, unset, 100);
+			right: 0;
+			width: 25%;
+			height: 100%;
+			color: $w;
+
+			.showAlbumList{
+				display: none;
+				margin: auto;
+				cursor: pointer;
+			}
+
+			.intro{
+				@include div(transparent, absolute, 50%, 50%, 100);
+				@include transform(translate(-50%, -50%));
+				@include animate(fade ease-in-out 0.3s);
+				width: 80%;
+				margin: auto;
+				text-align: center;
+				padding: 10px;
+				font-size: 20px;
+
+				img{
+					width: 30%;
+					display: block;
+					margin: 20px auto;
+
+				}
+			}
+
+			.actions{
+				color: $pcolor;
+				position: absolute;
+				color: #ff2c65;
+				width: 100%;
+				bottom: 0;
+
+				.sec{
+					display: inline-block;
+					cursor: pointer;
+					width: 11.5%;
+					text-align: center;
+					position: relative;
+
+					.fa{
+						padding: 10px;
+						border-radius: 100%;
+						@include transit(all ease-in-out 0.3s);
+
+						&:hover{
+							background: rgba(255,255,255,0.3);
+						}
+					}
+
+					.color-list{
+						z-index: 101;
+						position: absolute;
+						background: #fff;
+						color: $w;
+						padding: 10px;
+						top: -290px;
+						left: 50%;
+						width: 50px;
+						border-radius: 10px;
+						@include transform(translate(-50%));
+
+						&:after{
+							content: "";
+							position: absolute;
+							border-top: 10px solid #fff;
+							border-right: 10px solid transparent;
+							border-bottom: 10px solid transparent;
+							border-left: 10px solid transparent;
+							bottom: -19px;
+							left: 50%;
+							@include transform(translate(-50%));	
+						}
+
+						.color-pick{
+							margin-bottom: 5px;
+							height: 30px;
+							border-radius: 100%;
+							@include transit(all ease-in-out 0.3s);
+
+							&:hover, &.active{
+								border: 3px solid orange;
+							}
+
+							&:last-child{
+								margin: 0;
+							}
+						}
+					}
+				}
+
+				.search{
+					padding: 10px;
+					text-align: left;
+					position: relative;
+					width: 74%;
+
+					.fa-search{
+						cursor: pointer;
+						position: absolute;
+						top: 50%;
+						right: 20px;
+						@include transform(translate(0, -50%));
+					}
+				}				
+			}
+
+
+			.title{
+				font-size: 25px;
+				padding: 20px 10px;
+				color: $w;
+				font-weight: $bold;
+				border-bottom: 5px solid $pcolor;
+			}
+
+			ul{
+				height: 84%;
+				overflow: auto;
+				background: rgba(0,0,0,0.2);
+				@include animate(fade ease-in-out 0.3s);
+
+				li{
+					display: inline-block;
+					padding: 20px;
+					width: 100%;
+					border-bottom: 1px solid rgba(255,255,255,0.05);
+					cursor: pointer;
+					margin-top: 0;
+					position: relative;
+					@include transit(all ease-in-out 0.3s);
+
+					.fa-star{
+						position: absolute;
+						right: 20px;
+						top: 50%;
+						@include transform(translate(0, -50%));
+						color: $orange;
+					}
+
+					.info{
+						white-space: nowrap; 
+						overflow: hidden;
+						text-overflow: ellipsis;
+						margin-left: 35px;
+						width: 80%;
+					}
+
+					.artist{
+						font-size: 12px;
+						margin-top: 10px;
+						color: $wl;
+					}
+
+					.num{
+						font-weight: $bold;
+						position: absolute;
+						top: 50%;
+						left: 20px;
+						color: $orange;
+						@include transform(translate(0, -50%));
+					}					
+
+					&.active{
+						color: $pcolor;
+
+						.num{
+							color: $pcolor;
+						}
+					}
+
+					&:before{
+						content: "";
+						position: absolute;
+						width: 10px;
+						height: 0;
+						top: 50%;
+						left: 0;
+						@include transform(translate(0, -50%));		
+						@include transit(all ease-in-out 0.3s);				
+						border-left: 3px solid $w;
+					}
+
+					&:hover{
+						background: rgba(255,255,255,0.05);
+						border-color: transparent;
+
+						&:before{
+							height: 100%;
+						}
+					}
+
+					&:last-child{
+						border: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 800px){
+	body{
+		background-size: unset;
+
+		#app{
+
+			.er-showAll ul li{
+				width: 80%;
+			}
+			.er-playlist{
+				width: 100%;
+				background: #333;
+				// display: none;
+
+				.showAlbumList{
+					display: block;
+				}
+
+				.title{
+					text-align: center;
+				}
+			}
+			.er-showAll{
+				display: none;
+				width: 100%;
+			}
+
+			.er-displayMusic{
+				width: 80%;
+				@include div(transparent, absolute, 50%, 50%, 100);	
+				@include transform(translate(-50%, -50%));	
+
+				.cont{
+					text-align: center;
+					display: block;
+
+					img{
+						margin-bottom: 10px;
+					}
+
+					.rights{
+						display: none;
+					}
+
+					.view-info .price{
+						margin-bottom: 10px;
+					}
+				}
+
+				.tr{
+					text-align: left !important;
+
+					.btn{
+						display: inline-block;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 380px){
+	body{
+		#app{
+			.er-displayMusic{
+				@include transform(translate(-50%, -50%) scale(0.9));
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 360px){
+	body{
+		#app{
+			.er-displayMusic{
+				width: 80%;
+				@include transform(translate(-50%, -50%) scale(0.8));	
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 320px){
+	body{
+
+		#app{
+
+			.er-showAll ul li{
+				width: 80%;
+			}
+			.er-showAll{
+				display: none;
+				width: 100%;
+			}
+			.er-displayMusic{
+				width: 80%;	
+				@include transform(translate(-50%, -50%) scale(0.7));	
+			}
+		}
+	}
+}
+
+@media screen and (max-height: 480px){
+	body{
+		#app{
+			.er-displayMusic{
+				width: 80%;
+				@include transform(translate(-50%, -50%) scale(0.6));	
+			}
+		}
+	}
+}
