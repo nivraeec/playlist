@@ -49,7 +49,7 @@ const list = {
 					</transition>
 					<i class="fa fa-paint-brush" title="Change Color" @click="showColorPick"></i>
 				</div>
-				<div class="sec"><i class="fa fa-star" title="Filter Favorite" @click="filterFav" :class="this.filt? 'active' : ''"></i></div>
+				<div class="sec"><i class="fa fa-star" title="Filter Favorite" @click="filterFav" :class=" this.filt? 'active' : '' "></i></div>
 			</div>
 		</div>
 	`,
