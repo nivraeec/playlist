@@ -43,17 +43,15 @@ var app = new Vue({
 		}
 	},
 	methods: {
-		fetchList(){
-			let url = "https://itunes.apple.com/us/rss/topalbums/limit=100/json"
-
+		fetchList(url){
 			return axios({
 				method: 'get',
-				url: 'https://itunes.apple.com/us/rss/topalbums/limit=100/json',
+				url: url,
 				responseType: 'json'
 			})
 		},
 		pList(){
-			this.fetchList()
+			this.fetchList('https://itunes.apple.com/us/rss/topalbums/limit=100/json')
 			.then(res => {
 				res.data.feed.entry.map((v,k) => {
 					v.played = false
