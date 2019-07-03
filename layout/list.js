@@ -7,7 +7,8 @@ const list = {
 			pickColor: false,
 			slist: false,
 			ltitle: this.title || "Title Page",
-			current: null
+			current: null,
+			filt: false
 		}
 	},
 	template: `
@@ -48,7 +49,7 @@ const list = {
 					</transition>
 					<i class="fa fa-paint-brush" title="Change Color" @click="showColorPick"></i>
 				</div>
-				<div class="sec"><i class="fa fa-star" title="Filter Favorite" @click="filterFav"></i></div>
+				<div class="sec"><i class="fa fa-star" title="Filter Favorite" @click="filterFav" :class="this.filt? 'active' : ''"></i></div>
 			</div>
 		</div>
 	`,
@@ -111,6 +112,7 @@ const list = {
 			}, 10)
 		},
 		filterFav(){
+			this.filt = !this.filt
 			this.$emit("filter")
 		},
 		showNowList(){
