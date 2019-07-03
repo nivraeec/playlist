@@ -364,6 +364,10 @@ body{
 						
 						&.fa-paint-brush, &.fa-star{
 							background: rgba(255,255,255,0.1);
+							
+							&:hover{
+								background: rgba(255,255,255,0.5);
+							}
 						}
 
 						&.fa-star{
@@ -372,9 +376,6 @@ body{
 							}
 						}
 
-						&:hover{
-							background: rgba(255,255,255,0.5);
-						}
 					}
 
 					.color-list{
