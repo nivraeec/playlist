@@ -30,7 +30,7 @@ const list = {
 				</li>
 			</ul>
 			<div class="actions">
-				<div class="search sec">
+				<div class="search sec" :style="'visibility:' + (slist? 'visible':'hidden')">
 					<input type="text" placeholder="Search" @change="searchList" v-model="listSearch">
 					<i class="fa fa-search" @click="searchList"></i>
 				</div>
