@@ -21,7 +21,7 @@ const list = {
 				<button class="btn btn-primary showAlbumList" @click="showNowList">Show List</button>
 			</div>
 			<ul v-else>
-				<li v-for="(v,k) in mlist" @click="change(v, k)" :class="v.played? 'active' : ''" v-if="v.show">
+				<li v-for="(v,k) in mlist" @click="change(v, k)" :class="{active : v.played}" v-if="v.show">
 					<span class="num">{{k + 1}}</span>
 					<div class="info">
 						{{v["im:name"].label}}
@@ -49,7 +49,7 @@ const list = {
 					</transition>
 					<i class="fa fa-paint-brush" title="Change Color" @click="showColorPick"></i>
 				</div>
-				<div class="sec"><i class="fa fa-star" title="Filter Favorite" @click="filterFav" :class=" this.filt? 'active' : '' "></i></div>
+				<div class="sec"><i class="fa fa-star" title="Filter Favorite" @click="filterFav" :class="{active : this.filt}"></i></div>
 			</div>
 		</div>
 	`,

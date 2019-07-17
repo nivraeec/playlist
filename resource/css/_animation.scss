@@ -150,41 +150,41 @@
 }
 @-webki-keyframslideUpade{
 	from{
-		top: -250px;
+		bottom: 0;
 		opacity: 0;
 	}
 	to{
-		top: -290px;
+		bottom: 50px;
 		opacity: 1;
 	}
 }
 @-moz-keyframesslideUpe{
 	from{
-		top: -250px;
+		bottom: 0;
 		opacity: 0;
 	}
 	to{
-		top: -290px;
+		bottom: 50px;
 		opacity: 1;
 	}
 }
 @-o-keyframes slideUp{
 	from{
-		top: -250px;
+		bottom: 0;
 		opacity: 0;
 	}
 	to{
-		top: -290px;
+		bottom: 50px;
 		opacity: 1;
 	}
 }
 @keyframes slideUp{
 	from{
-		top: -250px;
+		bottom: 0;
 		opacity: 0;
 	}
 	to{
-		top: -290px;
+		bottom: 50px;
 		opacity: 1;
 	}
 }
