@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 	font-family: $df;
 	font-weight: $light;
-	font-size: 14px;
+	font-size: $fs;
 
 	&::-webkit-scrollbar-track{
 		background-color: rgba(0,0,0,0.05);

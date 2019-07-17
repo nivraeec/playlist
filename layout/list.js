@@ -23,7 +23,7 @@ const list = {
 			<ul v-else>
 				<li v-for="(v,k) in mlist" @click="change(v, k)" :class="{active : v.played}" v-if="v.show">
 					<span class="num">{{k + 1}}</span>
-					<div class="info">
+					<div class="info"> 
 						{{v["im:name"].label}}
 						<div class="artist">{{v["im:artist"].label}}</div>
 					</div>
